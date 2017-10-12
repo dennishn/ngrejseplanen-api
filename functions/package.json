@@ -1,0 +1,23 @@
+{
+  "name": "functions",
+  "description": "Cloud Functions for Firebase",
+  "dependencies": {
+    "axios": "^0.16.2",
+    "cors": "^2.8.4",
+    "express": "^4.16.2",
+    "firebase-admin": "~5.4.0",
+    "firebase-functions": "^0.7.0"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.1",
+    "@types/express": "^4.0.37",
+    "@types/request": "^2.0.4",
+    "typescript": "^2.5.3"
+  },
+  "scripts": {
+    "build": "tsc",
+    "watch": "tsc --watch",
+    "deploy": "tsc && firebase deploy --only functions"
+  },
+  "private": true
+}

@@ -1,7 +1,10 @@
 import * as functions from 'firebase-functions';
 import * as admin from 'firebase-admin';
-import * as RejseplanenApi from './rejseplanen-api';
+import {Server} from './server';
+import {Request, Response} from 'express';
 
-admin.initializeApp(functions.config().firebase);
+// admin.initializeApp(functions.config().firebase);
 
-export const rpApi = RejseplanenApi.listener;
+const server = new Server();
+
+export default functions.https.onRequest(server.app);

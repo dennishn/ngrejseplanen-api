@@ -1,7 +1,11 @@
 {
 	"compilerOptions": {
 		"target": "es6",
+		"lib": ["es6", "dom"],
 		"module": "commonjs",
+		"types": ["reflect-metadata"],
+		"experimentalDecorators":true,
+		"emitDecoratorMetadata": true,
 		"outDir": "./",
 		"noImplicitAny": true,
 		"strictNullChecks": false

@@ -7,4 +7,4 @@ import {Request, Response} from 'express';
 
 const server = new Server();
 
-export default functions.https.onRequest(server.app);
+export const app = functions.https.onRequest(server.app);

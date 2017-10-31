@@ -36,15 +36,21 @@ export class Api {
 
     private location = async (req: Request, res: Response, next: NextFunction) => {
         const axiosReqParams = Object.assign({}, RejseplanenConfig.routes.location.queryParams, req.query);
-        const axiosResponse = await this.axiosRequest(
-            RejseplanenConfig.routes.location.path,
-            'get',
-            axiosReqParams,
-            locationTransformer
-        );
 
-        res.json(axiosResponse.data);
-        next();
+        try {
+            const axiosResponse = await this.axiosRequest(
+                RejseplanenConfig.routes.location.path,
+                'get',
+                axiosReqParams,
+                locationTransformer
+            );
+
+            res.json(axiosResponse.data);
+            next();
+        }
+        catch(err) {
+            next(err);
+        }
     };
 
     private nearby = async (req: Request, res: Response, next: NextFunction) => {
@@ -53,7 +59,7 @@ export class Api {
             RejseplanenConfig.routes.nearby.path,
             'get',
             axiosReqParams,
-            nearbyTransformer
+            // nearbyTransformer
         );
 
         res.json(axiosResponse.data);
@@ -66,7 +72,7 @@ export class Api {
             RejseplanenConfig.routes.departureBoards.path,
             'get',
             axiosReqParams,
-            departureBoardsTransformer
+            // departureBoardsTransformer
         );
 
         res.json(axiosResponse.data);
@@ -79,12 +85,16 @@ export class Api {
             RejseplanenConfig.routes.departureBoard.path,
             'get',
             axiosReqParams,
-            departureBoardTransformer
+            // departureBoardTransformer
         );
 
         res.json(axiosResponse.data);
         next();
     };
+
+    private arrivalBoard = async (req: Request, res: Response, next: NextFunction) => {
+        // TODO
+    }
 
     private journeyDetail = async (req: Request, res: Response, next: NextFunction) => {
         const axiosReqParams = Object.assign({}, RejseplanenConfig.routes.journeyDetail.queryParams, req.query);
@@ -92,7 +102,7 @@ export class Api {
             RejseplanenConfig.routes.journeyDetail.path,
             'get',
             axiosReqParams,
-            journeyDetailTransformer
+            // journeyDetailTransformer
         );
 
         res.json(axiosResponse.data);

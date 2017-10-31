@@ -1,34 +1,19 @@
 import {intToWGS84} from '../utils/geolocation';
+import {RejseplanenLocationResponse} from '../data/rejseplanen/responses/location';
+import {ApiLocationResponse} from '../data/api/responses/location';
+import {ApiLocationStopLocation} from '../data/api/models/location-stop-location';
+import {RejseplanenLocationStopLocation} from '../data/rejseplanen/models/location-stop-location';
 
-interface IStopLocation {
-    [key: string]: any
-}
-interface ICoordLocation {
-    [key: string]: any
-}
-
-interface IRejseplanenLocationResponse {
-    LocationList: {
-        noNamespaceSchemaLocation: string;
-        StopLocation: IStopLocation[];
-        CoordLocation: ICoordLocation[];
-    }
-}
-
-interface IStopLocationTransformed {
-    [key: string]: any
-}
-interface IRejseplanenLocationTransformedResponse {
-    data: IStopLocationTransformed[];
-}
-
-export const locationTransformer = (data: IRejseplanenLocationResponse): IRejseplanenLocationTransformedResponse => {
-    const responseData: IRejseplanenLocationTransformedResponse = {
-        data: []
+export const locationTransformer = (data: RejseplanenLocationResponse): ApiLocationResponse => {
+    const responseData: ApiLocationResponse = {
+        data: {
+            stopLocation: []
+        }
     };
 
-    data.LocationList.StopLocation.forEach((e: IStopLocation) => {
-        const t: {[key: string]: any} = {};
+    data.LocationList.StopLocation.forEach((e: RejseplanenLocationStopLocation) => {
+        const t: ApiLocationStopLocation = <ApiLocationStopLocation>{};
+
         Object.keys(e).forEach((key: string) => {
             switch(key) {
                 case 'x':
@@ -39,11 +24,17 @@ export const locationTransformer = (data: IRejseplanenLocationResponse): IRejsep
                 case 'id':
                     t[key] = parseInt(e[key]);
                     break;
+                // case 'name':
+                //     t[key] = e[key];
+                //     break;
                 default:
-                    t[key] = e[key];
+                    const errorMessage = `RejseplanenLocationStopLocation had a key that was not present in the interface definition: ${key}`;
+                    console.log(errorMessage);
+                    throw new Error(errorMessage);
             }
         });
-        responseData.data.push(t);
+
+        responseData.data.stopLocation.push(t);
     });
 
     return responseData;

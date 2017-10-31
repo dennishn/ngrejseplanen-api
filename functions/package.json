@@ -31,8 +31,9 @@
   "scripts": {
     "build": "tsc",
     "watch": "tsc --watch",
-    "deploy": "npm run build && firebase deploy --only functions",
+    "deploy": "npm run build && firebase deploy --only functions,hosting",
     "serve": "firebase serve --only functions",
+    "serve:all": "firebase serve --only functions,hosting",
     "start": "npm run build && npm run serve"
   },
   "private": true

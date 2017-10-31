@@ -1,30 +1,12 @@
 import {parseRefId} from '../utils/rejseplanen';
 
-interface IDepartureBoard {
-    [key: string]: any;
-}
-
-interface IRejseplanenDepartureBoardResponse {
-    DepartureBoard: {
-        noNamespaceSchemaNearby: string;
-        Departure: IDepartureBoard[];
-    }
-}
-
-interface IDepartureBoardTransformed {
-    [key: string]: any;
-}
-interface IRejseplanenDepartureBoardTransformedResponse {
-    data: IDepartureBoardTransformed[];
-}
-
-export const departureBoardTransformer = (data: IRejseplanenDepartureBoardResponse): IRejseplanenDepartureBoardTransformedResponse => {
-    const responseData: IRejseplanenDepartureBoardTransformedResponse = {
+export const departureBoardTransformer = (data: any): any => {
+    const responseData: any = {
         data: []
     };
 
-    data.DepartureBoard.Departure.forEach((e: IDepartureBoard) => {
-        const t: {[key: string]: any} = {};
+    data.DepartureBoard.Departure.forEach((e: any) => {
+        const t: any = {};
         Object.keys(e).forEach((key: string) => {
             switch(key) {
                 case 'JourneyDetailRef':

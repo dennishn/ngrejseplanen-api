@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <title>Firebase Functions demo send FCM notifications</title>
+    </head>
+    <body>
+        <div>
+            <button class="login-btn" id="login">
+                Login first
+            </button>
+        </div>
+        <div>
+            <button id="register">
+                Register reminder thingie
+            </button>
+        </div>
+    
+        <script src="https://www.gstatic.com/firebasejs/4.6.0/firebase.js"></script>
+        <script>
+          // Initialize Firebase
+          var config = {
+            apiKey: "AIzaSyANHZjk1r_-X7hfp_QN5q2kskrQYMTt1m0",
+            authDomain: "ngrejseplanenapi.firebaseapp.com",
+            databaseURL: "https://ngrejseplanenapi.firebaseio.com",
+            projectId: "ngrejseplanenapi",
+            storageBucket: "ngrejseplanenapi.appspot.com",
+            messagingSenderId: "347842320745"
+          };
+          firebase.initializeApp(config);
+        </script>
+        
+        <script>
+            var token;
+            var usr;
+            
+            var loginBtn = document.getElementById('login');
+            loginBtn.onclick = function() {
+              var google = new firebase.auth.GoogleAuthProvider();
+              firebase.auth().signInWithPopup(google);
+  
+            }
+            
+            var registerBtn = document.getElementById('register');
+            registerBtn.onclick = function() {
+              firebase.database().ref('users/' + usr.uid + '/notifications/' + token).set(true);
+            }
+
+            function onAuthStateChanged(user) {
+              console.log(user);
+              if(user) {
+                usr = user;
+                firebase.database().ref('users/' + user.uid).update({
+                  displayName: user.displayName
+                });
+              }
+            }
+            firebase.auth().onAuthStateChanged(onAuthStateChanged.bind(this));
+            
+            
+            
+          navigator.serviceWorker.register('sw.js', {scope: './'}).then(function(swRegistration) {
+            var messaging = firebase.messaging();
+            messaging.useServiceWorker(swRegistration);
+            
+            messaging.onMessage(function(payload) {
+              console.log('Message recieved!', payload);
+            });
+            
+            messaging.requestPermission()
+              .then(function() {
+                return messaging.getToken();
+              })
+              .then(function(currentToken) {
+                console.warn(currentToken);
+                token = currentToken;
+              })
+              .catch(function(err) {
+                console.log(err);
+              });
+          });
+        </script>
+    </body>
+</html>

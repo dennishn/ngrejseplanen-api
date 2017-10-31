@@ -17,8 +17,8 @@ export class Server {
 
     constructor() {
         winston.log('info', 'NG Rejseplanen Express Server');
-        this.configureServer();
         this.configureApi();
+        this.configureServer();
     }
 
     private configureApi(): void {
@@ -29,21 +29,11 @@ export class Server {
         // mount logger
         this._app.use(logger('dev'));
 
+        this._app.use(compression());
+
         // mount query string parser
         this._app.use(bodyParser.urlencoded({
             extended: true
         }));
-
-        // catch 404 and forward to error handler
-        this._app.use((err: any, req: express.Request, res: express.Response, next: express.NextFunction) => {
-            clearImmediate('min 404');
-            err.status = 404;
-            next(err);
-        });
-
-        this._app.use(compression());
-
-        //error handling
-        this._app.use(errorHandler());
     }
 }

@@ -1,30 +1,15 @@
 import {intToWGS84} from '../utils/geolocation';
+import {RejseplanenStopsNearbyResponse} from '../data/rejseplanen/responses/stops-nearby';
+import {ApiStopsNearbyResponse} from '../data/api/responses/stops-nearby';
 
-interface IStopLocation {
-    [key: string]: any
-}
-
-interface IRejseplanenNearbyResponse {
-    LocationList: {
-        noNamespaceSchemaNearby: string;
-        StopLocation: IStopLocation[];
-    }
-}
-
-interface IStopLocationTransformed {
-    [key: string]: any
-}
-interface IRejseplanenNearbyTransformedResponse {
-    data: IStopLocationTransformed[];
-}
-
-export const nearbyTransformer = (data: IRejseplanenNearbyResponse): IRejseplanenNearbyTransformedResponse => {
-    const responseData: IRejseplanenNearbyTransformedResponse = {
+export const nearbyTransformer = (data: RejseplanenStopsNearbyResponse): ApiStopsNearbyResponse => {
+    const responseData: ApiStopsNearbyResponse = {
         data: []
     };
 
-    data.LocationList.StopLocation.forEach((e: IStopLocation) => {
-        const t: {[key: string]: any} = {};
+    data.LocationList.StopLocation.forEach((e: any) => {
+        const t: any = {};
+
         Object.keys(e).forEach((key: string) => {
             switch(key) {
                 case 'x':
@@ -36,10 +21,11 @@ export const nearbyTransformer = (data: IRejseplanenNearbyResponse): IRejseplane
                 case 'distance':
                     t[key] = parseInt(e[key]);
                     break;
-                default:
+                case 'name':
                     t[key] = e[key];
             }
         });
+
         responseData.data.push(t);
     });
 

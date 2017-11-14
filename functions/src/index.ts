@@ -2,67 +2,17 @@ import * as functions from 'firebase-functions';
 import * as admin from 'firebase-admin';
 import {Server} from './server';
 import {Request, Response} from 'express';
+import * as angularUniversal from 'angular-universal-express-firebase';
 
 admin.initializeApp(functions.config().firebase);
 
 const server = new Server();
 
-export const app = functions.https.onRequest(server.app);
-export const sendNotification = functions.database.ref('/users/{userUid}/notifications/{notificationUid}').onWrite(event => {
-    console.log('WAFAK');
-    const userUid = event.params.userUid;
-    const notificationUid = event.params.notificationUid;
-
-    // No data === user un-registeret his reminder
-    if(!event.data.val()) {
-        return console.log(`User ${userUid} unregistered his notification reminder`);
-    }
-
-    console.log(`We have a new User Notification UID ${notificationUid} for user: ${userUid}`);
-
-    const getDeviceTokensPromise = admin.database().ref(`/users/${userUid}/notifications`).once('value');
-    const getUserProfilePromise = admin.auth().getUser(userUid);
-
-    return Promise.all([getDeviceTokensPromise, getUserProfilePromise]).then(([deviceTokens, userProfile]) => {
-
-        if (!deviceTokens.hasChildren()) {
-            return Promise.reject('There are no notification tokens to send to.');
-        }
-
-        console.log(`There are ${deviceTokens.numChildren()} tokens to send notifications to`);
-        console.log(`Fetched user profile: ${userProfile}`);
-
-        const payload = {
-            notification: {
-                title: 'HEJ FRA MIG TIL DIG',
-                body: `Du skal nå din bus n00b`,
-                icon: userProfile.photoURL
-            }
-        };
-
-        const tokens = Object.keys(deviceTokens.val());
-
-        return admin.messaging().sendToDevice(tokens, payload).then((response) => {
-            // for each msg check if there was an error
-            const tokensToRemove: Array<any> = [];
-
-            response.results.forEach((result, index) => {
-                const error = result.error;
-
-                if(error) {
-                    console.error('Failure sending notification to', tokens[index], error);
-
-                    if (error.code === 'messaging/invalid-registration-token' ||
-                        error.code === 'messaging/registration-token-not-registered') {
-                        tokensToRemove.push(deviceTokens.ref.child(tokens[index]).remove());
-                    }
-
-                }
-
-            });
-
-            return Promise.all(tokensToRemove);
-
-        });
-    });
+export const api = functions.https.onRequest(server.app);
+export const app = angularUniversal.trigger({
+  index: __dirname + '/index.html',
+  main: __dirname + '/main.bundle',
+  enableProdMode: true,
+  cdnCacheExpiry: 43200, // 12hrs
+  browserCacheExpiry: 3600 // 1 hr
 });

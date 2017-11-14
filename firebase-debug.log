@@ -1,0 +1,37 @@
+[debug] [2017-11-14T17:53:00.433Z] ----------------------------------------------------------------------
+[debug] [2017-11-14T17:53:00.436Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\dni\AppData\Roaming\npm\node_modules\firebase-tools\bin\firebase serve --only functions
+[debug] [2017-11-14T17:53:00.436Z] CLI Version:   3.14.0
+[debug] [2017-11-14T17:53:00.436Z] Platform:      win32
+[debug] [2017-11-14T17:53:00.436Z] Node Version:  v8.9.0
+[debug] [2017-11-14T17:53:00.437Z] Time:          Tue Nov 14 2017 18:53:00 GMT+0100 (Romance Standard Time)
+[debug] [2017-11-14T17:53:00.437Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2017-11-14T17:53:00.451Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2017-11-14T17:53:00.451Z] > authorizing via signed-in user
+[debug] [2017-11-14T17:53:00.453Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2017-11-14T17:53:00.453Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token { refresh_token: '1/qm6z5zYVHd42P0xBs5KroG5XGGYzRR2FbViZ8eSim0EBrJdM1bMT2nmPxeuGWS7-',
+  client_id: '563584335869-fgrhgmd47bqnekij5i8b5pr03ho849e6.apps.googleusercontent.com',
+  client_secret: 'j9iVZfS8kkCEFUPaAeJV0sAi',
+  grant_type: 'refresh_token',
+  scope: 'email https://www.googleapis.com/auth/cloud-platform https://www.googleapis.com/auth/cloudplatformprojects.readonly https://www.googleapis.com/auth/firebase openid' } 
+ Tue Nov 14 2017 18:53:00 GMT+0100 (Romance Standard Time)
+[debug] [2017-11-14T17:53:00.867Z] <<< HTTP RESPONSE 200
+[debug] [2017-11-14T17:53:00.875Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/ngrejseplanenapi  
+ Tue Nov 14 2017 18:53:00 GMT+0100 (Romance Standard Time)
+[debug] [2017-11-14T17:53:01.912Z] <<< HTTP RESPONSE 200
+[debug] [2017-11-14T17:53:01.912Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/database/ngrejseplanenapi/tokens  
+ Tue Nov 14 2017 18:53:01 GMT+0100 (Romance Standard Time)
+[debug] [2017-11-14T17:53:02.652Z] <<< HTTP RESPONSE 200
+[info] 
+[info] === Serving from 'D:\projects\ngrejseplanen-api'...
+[info] 
+[info] i  functions: Preparing to emulate functions.
+[debug] [2017-11-14T17:53:05.510Z] >>> HTTP REQUEST GET https://appengine.googleapis.com/v1/apps/ngrejseplanenapi  
+ Tue Nov 14 2017 18:53:05 GMT+0100 (Romance Standard Time)
+[debug] [2017-11-14T17:53:05.511Z] >>> HTTP REQUEST GET https://apikeys.googleapis.com/v1/projects/ngrejseplanenapi/apiKeys  
+ Tue Nov 14 2017 18:53:05 GMT+0100 (Romance Standard Time)
+[debug] [2017-11-14T17:53:09.092Z] <<< HTTP RESPONSE 200
+[debug] [2017-11-14T17:53:09.264Z] <<< HTTP RESPONSE 200
+[info] +  functions: api: http://localhost:5000/ngrejseplanenapi/us-central1/api
+[info] +  functions: app: http://localhost:5000/ngrejseplanenapi/us-central1/app
+[info] Shutting down...

@@ -10,7 +10,7 @@ import {API_VERSION} from './api/config/api';
 export class Server {
     private _app: express.Application = express();
     private _api: Api = new Api();
-    
+
     public get app(): express.Application {
         return this._app;
     }
@@ -22,7 +22,7 @@ export class Server {
     }
 
     private configureApi(): void {
-        this._app.use(`/api/v${API_VERSION}`, this._api.routes);
+        this._app.use(`/v${API_VERSION}`, this._api.routes);
     }
 
     private configureServer(): void {

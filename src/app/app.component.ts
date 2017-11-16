@@ -1,5 +1,8 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Inject, OnInit, PLATFORM_ID} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
+import {makeStateKey, TransferState} from "@angular/platform-browser";
+
+const FOO_KEY = makeStateKey('foo');
 
 @Component({
   selector: 'ngr-root',
@@ -12,20 +15,28 @@ export class AppComponent implements OnInit {
   requests: number = 0;
 
   constructor(
-    private http: HttpClient
+    private http: HttpClient,
+    private transferState: TransferState
   ) {
-
+    console.log('omg');
   }
 
   ngOnInit() {
-    this.requests++;
-    this.http.get('https://us-central1-ngrejseplanenapi.cloudfunctions.net/api/api/v1', {
-      responseType: 'text'
-    })
-      .subscribe((res: any) => {
-        console.warn('YAAAY', res);
-        console.info('reqs', this.requests);
-        this.response = res;
+    // Stuuuupid but proof of concept that transfer state works :)
+    this.response = this.transferState.get(FOO_KEY, null as any);
+    if(!this.response) {
+      console.warn('nothing in state thingie :(');
+      this.getData();
+    }
+  }
+
+  private getData() {
+    console.info('getting dataz');
+    this.http.get(`https://us-central1-ngrejseplanenapi.cloudfunctions.net/api/v1`, {responseType: 'text'})
+      .subscribe((d: any) => {
+        console.error(`gottenz dataz`, d);
+        this.response = d;
+        this.transferState.set(FOO_KEY, d);
       });
   }
 }

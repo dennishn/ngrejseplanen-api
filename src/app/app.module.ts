@@ -1,4 +1,4 @@
-import { BrowserModule } from '@angular/platform-browser';
+import {BrowserModule, BrowserTransferStateModule} from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -12,7 +12,8 @@ import {HttpClientModule} from "@angular/common/http";
   imports: [
     BrowserModule.withServerTransition({appId: 'nguniversal'}),
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserTransferStateModule
   ],
   providers: [],
   bootstrap: [AppComponent]

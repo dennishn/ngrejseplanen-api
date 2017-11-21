@@ -4,6 +4,7 @@
   "license": "MIT",
   "scripts": {
     "serve": "firebase serve --only functions,hosting",
+    "ngsw:build": "sh ngsw.sh",
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",

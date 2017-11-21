@@ -32,11 +32,13 @@ export class AppComponent implements OnInit {
 
   private getData() {
     console.info('getting dataz');
+    /*
     this.http.get(`https://us-central1-ngrejseplanenapi.cloudfunctions.net/api/v1`, {responseType: 'text'})
       .subscribe((d: any) => {
         console.error(`gottenz dataz`, d);
         this.response = d;
         this.transferState.set(FOO_KEY, d);
       });
+    */
   }
 }

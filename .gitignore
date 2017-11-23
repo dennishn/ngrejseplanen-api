@@ -43,7 +43,8 @@ Thumbs.db
 
 functions/node_modules
 functions/*.js
-functions/server
+server/node_modules
+public
 
 
 

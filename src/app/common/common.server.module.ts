@@ -6,4 +6,8 @@ import {CommonModule} from "./common.module";
     CommonModule
   ]
 })
-export class CommonServerModule {}
+export class CommonServerModule {
+  constructor() {
+    console.log('common server module says hi');
+  }
+}

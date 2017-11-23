@@ -41,11 +41,9 @@ testem.log
 .DS_Store
 Thumbs.db
 
-functions/node_modules
-functions/*.js
+functions
 server/node_modules
 public
-
 
 
 

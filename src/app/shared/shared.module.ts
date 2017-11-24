@@ -1,8 +1,8 @@
 import {NgModule} from "@angular/core";
 
 @NgModule({})
-export class CommonModule {
+export class SharedModule {
   constructor() {
-    console.log('common module says hi');
+    console.log('shared module says hi');
   }
 }

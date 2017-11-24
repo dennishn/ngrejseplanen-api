@@ -7,13 +7,13 @@ import {isPlatformBrowser} from "@angular/common";
 const FOO_KEY = makeStateKey(`foo`);
 
 @Component({
-  selector: `ngr-root`,
-  templateUrl: `./app.component.html`,
-  styleUrls: [`./app.component.scss`]
+  selector: 'ngr-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
-  title = `ngr`;
-  response: string = ``;
+  title = 'ngr';
+  response: string = '';
   requests: number = 0;
 
   isBrowser: boolean;

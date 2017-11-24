@@ -5,8 +5,9 @@ import {AppModule} from "./app.module";
 import {AppComponent} from "./app.component";
 import {NoopAnimationsModule} from "@angular/platform-browser/animations";
 import {ModuleMapLoaderModule} from "@nguniversal/module-map-ngfactory-loader";
-import {ServiceWorkerModuleMock} from "./service-worker/mock/service-worker.mock.module";
-import {CommonServerModule} from "./common/common.server.module";
+import {ServiceWorkerModuleMock} from "./mocks/service-worker/service-worker.mock.module";
+import {SharedServerModule} from "./shared/shared.server.module";
+import {CoreServerModule} from "./core/core.server.module";
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import {CommonServerModule} from "./common/common.server.module";
     ServerTransferStateModule,
     ModuleMapLoaderModule,
     ServiceWorkerModuleMock,
-    CommonServerModule
+    SharedServerModule,
+    CoreServerModule
   ],
   providers: [],
   bootstrap: [AppComponent],

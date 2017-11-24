@@ -10,8 +10,8 @@
 		"noImplicitAny": true,
 		"strictNullChecks": false
 	},
-	"include": [
-		"src/**/*.ts"
+	"files": [
+    "index.ts"
 	],
 	"exclude": [
     "node_modules"

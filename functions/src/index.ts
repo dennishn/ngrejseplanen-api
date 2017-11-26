@@ -2,7 +2,10 @@ import * as functions from 'firebase-functions';
 import * as admin from 'firebase-admin';
 import {Server} from './server';
 import {Request, Response} from 'express';
-import * as angularUniversal from 'angular-universal-express-firebase';
+import * as angularUniversal from "./universal";
+
+const {LAZY_MODULE_MAP} = require(__dirname + '/main.bundle');
+const {provideModuleMap} = require('@nguniversal/module-map-ngfactory-loader');
 
 admin.initializeApp(functions.config().firebase);
 
@@ -13,6 +16,9 @@ export const app = angularUniversal.trigger({
   index: __dirname + '/index.html',
   main: __dirname + '/main.bundle',
   enableProdMode: true,
-  cdnCacheExpiry: 43200, // 12hrs
-  browserCacheExpiry: 3600 // 1 hr
+  cdnCacheExpiry: 43200, // 12 hrs
+  browserCacheExpiry: 3600, // 1 hr
+  extraProviders: [
+    provideModuleMap(LAZY_MODULE_MAP)
+  ]
 });

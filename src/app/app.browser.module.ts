@@ -4,19 +4,20 @@ import {AppComponent} from "./app.component";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {ServiceWorkerModule} from "@angular/service-worker";
 import {environment} from "../environments/environment";
-import {BrowserTransferStateModule} from "@angular/platform-browser";
-
+import {CommonBrowserModule} from "./common/common.browser.module";
 
 @NgModule({
   imports: [
     BrowserAnimationsModule,
     AppModule,
-    environment.production ? ServiceWorkerModule.register('/ngsw-worker.js') :[],
-    BrowserTransferStateModule
+    environment.production ? ServiceWorkerModule.register('/ngsw-worker.js') : [],
+    CommonBrowserModule
   ],
   providers: [],
   bootstrap: [AppComponent],
 })
 export class AppBrowserModule {
+  constructor() {
 
+  }
 }

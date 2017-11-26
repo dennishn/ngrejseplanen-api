@@ -94,7 +94,7 @@ export class Api {
 
     private arrivalBoard = async (req: Request, res: Response, next: NextFunction) => {
         // TODO
-    }
+    };
 
     private journeyDetail = async (req: Request, res: Response, next: NextFunction) => {
         const axiosReqParams = Object.assign({}, RejseplanenConfig.routes.journeyDetail.queryParams, req.query);

@@ -4,16 +4,28 @@ import {SelectivePreloadingStrategy} from "./core/routing/selective-preloading-s
 
 const routes: Routes = [
   {
-    path: 'lazy',
-    loadChildren: 'app/lazy/lazy.module#LazyModule'
+    path: '',
+    pathMatch: 'full',
+    redirectTo: 'search'
   },
   {
-    path: 'lazier',
-    loadChildren: 'app/lazier/lazier.module#LazierModule',
+    path: 'search',
+    loadChildren: 'app/search/search.module#SearchModule',
     data: {
       preload: true
     }
   }
+  // {
+  //   path: 'lazy',
+  //   loadChildren: 'app/lazy/lazy.module#LazyModule'
+  // },
+  // {
+  //   path: 'lazier',
+  //   loadChildren: 'app/lazier/lazier.module#LazierModule',
+  //   data: {
+  //     preload: true
+  //   }
+  // }
 ];
 
 @NgModule({

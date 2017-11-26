@@ -1,0 +1,8 @@
+<form [formGroup]="locationSearchForm" (ngSubmit)="onSubmit()" novalidate>
+  <mat-form-field>
+    <input type="text" matInput formControlName="input" placeholder="Søg">
+    <mat-hint align="start">Station, Stop, Addresse</mat-hint>
+  </mat-form-field>
+
+  <button mat-button color="primary" type="submit" [disabled]="locationSearchForm.invalid || locationSearchForm.pristine">Søg</button>
+</form>

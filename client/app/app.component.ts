@@ -6,6 +6,7 @@ import {ApiLocationResponse} from "./core/data/rejseplanen/responses/location";
 import {ApiDepartureBoardResponse} from "./core/data/rejseplanen/responses/departure-board";
 import {ApiDeparture} from "./core/data/rejseplanen/models/departure";
 import {ApiJourneyDetailResponse} from "./core/data/rejseplanen/responses/journey-detail";
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'ngr-root',
@@ -22,7 +23,8 @@ export class AppComponent implements OnInit, OnChanges {
 
   constructor(
     private rejseplanen: RejseplanenService,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private router: Router
   ) {
     this.createForm();
   }
@@ -36,15 +38,20 @@ export class AppComponent implements OnInit, OnChanges {
   }
 
   public onSubmit() {
-    this.rejseplanen.getLocation(this.locationSearchForm.get('input').value)
-      .subscribe(
-        (response: ApiLocationResponse) => {
-          this.locations = response.data.stopLocation;
-        },
-        (error) => {
-          console.error(error);
-        }
-      );
+    this.router.navigate(['/search/location'], {
+      queryParams: {
+        location: this.locationSearchForm.get('input').value
+      }
+    });
+    // this.rejseplanen.getLocation(this.locationSearchForm.get('input').value)
+    //   .subscribe(
+    //     (response: ApiLocationResponse) => {
+    //       this.locations = response.data.stopLocation;
+    //     },
+    //     (error) => {
+    //       console.error(error);
+    //     }
+    //   );
   }
 
   public onStopClicked(stopId: string) {

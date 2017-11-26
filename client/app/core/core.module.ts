@@ -1,25 +1,16 @@
 import {NgModule, Optional, SkipSelf} from "@angular/core";
 import {SelectivePreloadingStrategy} from "./routing/selective-preloading-strategy";
 import {RejseplanenModule} from "./data/rejseplanen/rejseplanen.module";
-import {FormsModule, ReactiveFormsModule} from "@angular/forms";
-import {CommonModule} from "@angular/common";
-import {HttpClientModule} from "@angular/common/http";
+import { StateService } from './state/state.service';
 
 @NgModule({
   imports: [
-    CommonModule,
-    ReactiveFormsModule,
-    HttpClientModule,
     // App
     RejseplanenModule
   ],
   providers: [
-    SelectivePreloadingStrategy
-  ],
-  exports: [
-    CommonModule,
-    ReactiveFormsModule,
-    HttpClientModule
+    SelectivePreloadingStrategy,
+    StateService
   ]
 })
 export class CoreModule {

@@ -1,39 +1,39 @@
-[debug] [2017-11-28T16:47:41.127Z] ----------------------------------------------------------------------
-[debug] [2017-11-28T16:47:41.130Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\dni\AppData\Roaming\npm\node_modules\firebase-tools\bin\firebase serve --only functions,hosting
-[debug] [2017-11-28T16:47:41.130Z] CLI Version:   3.14.0
-[debug] [2017-11-28T16:47:41.130Z] Platform:      win32
-[debug] [2017-11-28T16:47:41.131Z] Node Version:  v8.9.0
-[debug] [2017-11-28T16:47:41.131Z] Time:          Tue Nov 28 2017 17:47:41 GMT+0100 (Romance Standard Time)
-[debug] [2017-11-28T16:47:41.132Z] ----------------------------------------------------------------------
+[debug] [2017-11-28T19:45:04.141Z] ----------------------------------------------------------------------
+[debug] [2017-11-28T19:45:04.143Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\Dennis\AppData\Roaming\npm\node_modules\firebase-tools\bin\firebase serve --only functions
+[debug] [2017-11-28T19:45:04.143Z] CLI Version:   3.13.1
+[debug] [2017-11-28T19:45:04.143Z] Platform:      win32
+[debug] [2017-11-28T19:45:04.143Z] Node Version:  v7.10.0
+[debug] [2017-11-28T19:45:04.143Z] Time:          Tue Nov 28 2017 20:45:04 GMT+0100 (Rom, normaltid)
+[debug] [2017-11-28T19:45:04.143Z] ----------------------------------------------------------------------
 [debug] 
-[debug] [2017-11-28T16:47:41.147Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
-[debug] [2017-11-28T16:47:41.147Z] > authorizing via signed-in user
-[debug] [2017-11-28T16:47:41.150Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/ngrejseplanenapi  
- Tue Nov 28 2017 17:47:41 GMT+0100 (Romance Standard Time)
-[debug] [2017-11-28T16:47:42.597Z] <<< HTTP RESPONSE 200
-[debug] [2017-11-28T16:47:42.598Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/database/ngrejseplanenapi/tokens  
- Tue Nov 28 2017 17:47:42 GMT+0100 (Romance Standard Time)
-[debug] [2017-11-28T16:48:19.756Z] <<< HTTP RESPONSE 200
+[debug] [2017-11-28T19:45:04.150Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2017-11-28T19:45:04.150Z] > authorizing via signed-in user
+[debug] [2017-11-28T19:45:04.152Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/ngrejseplanenapi  
+ Tue Nov 28 2017 20:45:04 GMT+0100 (Rom, normaltid)
+[debug] [2017-11-28T19:45:04.935Z] <<< HTTP RESPONSE 200
+[debug] [2017-11-28T19:45:04.935Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/database/ngrejseplanenapi/tokens  
+ Tue Nov 28 2017 20:45:04 GMT+0100 (Rom, normaltid)
+[debug] [2017-11-28T19:45:13.480Z] <<< HTTP RESPONSE 200
 [info] 
-[info] === Serving from 'D:\projects\ngrejseplanen-api'...
+[info] === Serving from 'C:\Users\Dennis\Documents\ngrejseplanen-api'...
 [info] 
 [info] i  functions: Preparing to emulate functions.
-[debug] [2017-11-28T16:48:20.188Z] >>> HTTP REQUEST GET https://appengine.googleapis.com/v1/apps/ngrejseplanenapi  
- Tue Nov 28 2017 17:48:20 GMT+0100 (Romance Standard Time)
-[debug] [2017-11-28T16:48:20.189Z] >>> HTTP REQUEST GET https://apikeys.googleapis.com/v1/projects/ngrejseplanenapi/apiKeys  
- Tue Nov 28 2017 17:48:20 GMT+0100 (Romance Standard Time)
-[debug] [2017-11-28T16:48:20.189Z] >>> HTTP REQUEST GET https://cloudresourcemanager.googleapis.com/v1/projects/ngrejseplanenapi  
- Tue Nov 28 2017 17:48:20 GMT+0100 (Romance Standard Time)
-[debug] [2017-11-28T16:48:21.914Z] <<< HTTP RESPONSE 200
-[debug] [2017-11-28T16:48:21.915Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/347842320745/clients/_:getWebAppConfig  
- Tue Nov 28 2017 17:48:21 GMT+0100 (Romance Standard Time)
-[debug] [2017-11-28T16:48:21.918Z] <<< HTTP RESPONSE 200
-[debug] [2017-11-28T16:48:21.981Z] <<< HTTP RESPONSE 200
-[debug] [2017-11-28T16:48:23.143Z] <<< HTTP RESPONSE 200
-[info] i  hosting: Serving hosting files from: public
-[info] +  hosting: Local server: http://localhost:5000
-
-[info] +  functions: api: http://localhost:5001/ngrejseplanenapi/us-central1/api
-[info] +  functions: app: http://localhost:5001/ngrejseplanenapi/us-central1/app
-[info] [hosting] Rewriting / to local function app
-[info] [hosting] Rewriting /search/results?location=niv%C3%A5 to local function app
+[debug] [2017-11-28T19:45:13.683Z] >>> HTTP REQUEST GET https://appengine.googleapis.com/v1/apps/ngrejseplanenapi  
+ Tue Nov 28 2017 20:45:13 GMT+0100 (Rom, normaltid)
+[debug] [2017-11-28T19:45:13.684Z] >>> HTTP REQUEST GET https://apikeys.googleapis.com/v1/projects/ngrejseplanenapi/apiKeys  
+ Tue Nov 28 2017 20:45:13 GMT+0100 (Rom, normaltid)
+[debug] [2017-11-28T19:45:14.649Z] <<< HTTP RESPONSE 200
+[debug] [2017-11-28T19:45:14.703Z] <<< HTTP RESPONSE 200
+[info] +  functions: api: http://localhost:5000/ngrejseplanenapi/us-central1/api
+[info] +  functions: app: http://localhost:5000/ngrejseplanenapi/us-central1/app
+[debug] [2017-11-28T22:21:00.750Z] Error: write EPIPE
+    at exports._errnoException (util.js:1050:11)
+    at Socket._writeGeneric (net.js:725:26)
+    at Socket._write (net.js:744:8)
+    at doWrite (_stream_writable.js:329:12)
+    at writeOrBuffer (_stream_writable.js:315:5)
+    at Socket.Writable.write (_stream_writable.js:241:11)
+    at Socket.write (net.js:671:40)
+    at exports.Console.Console.log (C:\Users\Dennis\AppData\Roaming\npm\node_modules\firebase-tools\node_modules\winston\lib\winston\transports\console.js:119:20)
+    at emit (C:\Users\Dennis\AppData\Roaming\npm\node_modules\firebase-tools\node_modules\winston\lib\winston\logger.js:186:17)
+    at C:\Users\Dennis\AppData\Roaming\npm\node_modules\firebase-tools\node_modules\winston\node_modules\async\lib\async.js:157:13

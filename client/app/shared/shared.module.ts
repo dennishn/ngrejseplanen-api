@@ -2,6 +2,7 @@ import {NgModule} from "@angular/core";
 import {ReactiveFormsModule} from "@angular/forms";
 import {CommonModule} from "@angular/common";
 import {HttpClientModule} from "@angular/common/http";
+import {ResultsComponent} from './results/results.component';
 
 @NgModule({
   imports: [
@@ -9,10 +10,14 @@ import {HttpClientModule} from "@angular/common/http";
     ReactiveFormsModule,
     HttpClientModule
   ],
+  declarations: [
+    ResultsComponent
+  ],
   exports: [
     CommonModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    ResultsComponent
   ]
 })
 export class SharedModule {

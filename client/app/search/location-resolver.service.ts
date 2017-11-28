@@ -22,7 +22,7 @@ export class LocationResolverService implements Resolve<ApiLocationResponse> {
   ) {}
 
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<ApiLocationResponse> {
-    const searchTerm = route.paramMap.get('location');
+    const searchTerm = route.queryParamMap.get('location');
     const stateData = this.transferState.hasKey(LOCATION_STATE);
 
     if(stateData) {
@@ -30,12 +30,12 @@ export class LocationResolverService implements Resolve<ApiLocationResponse> {
       this.transferState.remove(LOCATION_STATE);
       return response;
     } else {
-      this.transferState.onSerialize(LOCATION_STATE, () => this.result);
+      // this.transferState.onSerialize(LOCATION_STATE, () => this.result);
       return this.rejseplanen.getLocation(searchTerm).pipe(
         take(1),
         map((response: ApiLocationResponse) => {
           if(response) {
-            this.transferState.set(LOCATION_STATE, response);
+            this.transferState.set(LOCATION_STATE, response as null);
             return response;
           } else {
             this.router.navigate(['/search']);

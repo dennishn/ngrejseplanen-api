@@ -3,7 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import {LocationComponent} from './location/location.component';
 import {SearchContainerComponent} from './container/search.component';
 import {LocationResolverService} from './location-resolver.service';
-import {ResultsComponent} from "./results/results.component";
+import {ResultsComponent} from "../shared/results/results.component";
 
 const routes: Routes = [
   {
@@ -17,14 +17,15 @@ const routes: Routes = [
       },
       {
         path: 'location',
-        component: LocationComponent
+        component: LocationComponent,
+        resolve: {
+          results: LocationResolverService
+        },
+        runGuardsAndResolvers: 'paramsOrQueryParamsChange'
       },
       {
         path: 'results',
-        component: ResultsComponent,
-        resolve: {
-          results: LocationResolverService
-        }
+        component: ResultsComponent
       }
     ]
   },

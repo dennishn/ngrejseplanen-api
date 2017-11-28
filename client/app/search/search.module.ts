@@ -5,7 +5,6 @@ import { SearchContainerComponent} from './container/search.component';
 import {SharedModule} from '../shared/shared.module';
 import { LocationComponent } from './location/location.component';
 import {AppMaterialModule} from '../shared/material.module';
-import {ResultsComponent} from "./results/results.component";
 
 @NgModule({
   imports: [
@@ -15,8 +14,7 @@ import {ResultsComponent} from "./results/results.component";
   ],
   declarations: [
     SearchContainerComponent,
-    LocationComponent,
-    ResultsComponent
+    LocationComponent
   ]
 })
 export class SearchModule { }

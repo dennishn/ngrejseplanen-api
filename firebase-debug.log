@@ -1,0 +1,39 @@
+[debug] [2017-11-28T16:47:41.127Z] ----------------------------------------------------------------------
+[debug] [2017-11-28T16:47:41.130Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\dni\AppData\Roaming\npm\node_modules\firebase-tools\bin\firebase serve --only functions,hosting
+[debug] [2017-11-28T16:47:41.130Z] CLI Version:   3.14.0
+[debug] [2017-11-28T16:47:41.130Z] Platform:      win32
+[debug] [2017-11-28T16:47:41.131Z] Node Version:  v8.9.0
+[debug] [2017-11-28T16:47:41.131Z] Time:          Tue Nov 28 2017 17:47:41 GMT+0100 (Romance Standard Time)
+[debug] [2017-11-28T16:47:41.132Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2017-11-28T16:47:41.147Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2017-11-28T16:47:41.147Z] > authorizing via signed-in user
+[debug] [2017-11-28T16:47:41.150Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/ngrejseplanenapi  
+ Tue Nov 28 2017 17:47:41 GMT+0100 (Romance Standard Time)
+[debug] [2017-11-28T16:47:42.597Z] <<< HTTP RESPONSE 200
+[debug] [2017-11-28T16:47:42.598Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/database/ngrejseplanenapi/tokens  
+ Tue Nov 28 2017 17:47:42 GMT+0100 (Romance Standard Time)
+[debug] [2017-11-28T16:48:19.756Z] <<< HTTP RESPONSE 200
+[info] 
+[info] === Serving from 'D:\projects\ngrejseplanen-api'...
+[info] 
+[info] i  functions: Preparing to emulate functions.
+[debug] [2017-11-28T16:48:20.188Z] >>> HTTP REQUEST GET https://appengine.googleapis.com/v1/apps/ngrejseplanenapi  
+ Tue Nov 28 2017 17:48:20 GMT+0100 (Romance Standard Time)
+[debug] [2017-11-28T16:48:20.189Z] >>> HTTP REQUEST GET https://apikeys.googleapis.com/v1/projects/ngrejseplanenapi/apiKeys  
+ Tue Nov 28 2017 17:48:20 GMT+0100 (Romance Standard Time)
+[debug] [2017-11-28T16:48:20.189Z] >>> HTTP REQUEST GET https://cloudresourcemanager.googleapis.com/v1/projects/ngrejseplanenapi  
+ Tue Nov 28 2017 17:48:20 GMT+0100 (Romance Standard Time)
+[debug] [2017-11-28T16:48:21.914Z] <<< HTTP RESPONSE 200
+[debug] [2017-11-28T16:48:21.915Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/347842320745/clients/_:getWebAppConfig  
+ Tue Nov 28 2017 17:48:21 GMT+0100 (Romance Standard Time)
+[debug] [2017-11-28T16:48:21.918Z] <<< HTTP RESPONSE 200
+[debug] [2017-11-28T16:48:21.981Z] <<< HTTP RESPONSE 200
+[debug] [2017-11-28T16:48:23.143Z] <<< HTTP RESPONSE 200
+[info] i  hosting: Serving hosting files from: public
+[info] +  hosting: Local server: http://localhost:5000
+
+[info] +  functions: api: http://localhost:5001/ngrejseplanenapi/us-central1/api
+[info] +  functions: app: http://localhost:5001/ngrejseplanenapi/us-central1/app
+[info] [hosting] Rewriting / to local function app
+[info] [hosting] Rewriting /search/results?location=niv%C3%A5 to local function app

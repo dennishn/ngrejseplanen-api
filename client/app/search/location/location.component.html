@@ -6,4 +6,5 @@
 
   <button mat-button color="primary" type="submit" [disabled]="locationSearchForm.invalid || locationSearchForm.pristine">Søg</button>
 </form>
-<ngr-results [results]=""></ngr-results>
+
+<pre>{{results$ | async | json}}</pre>

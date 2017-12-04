@@ -1,6 +1,9 @@
 import {Component, OnChanges, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {Router} from "@angular/router";
+import {ActivatedRoute, ActivatedRouteSnapshot, Router} from "@angular/router";
+import {Observable} from "rxjs/Observable";
+import {pluck, map} from 'rxjs/operators';
+import {ApiLocationResponse} from "../../core/data/rejseplanen/responses/location";
 
 @Component({
   selector: 'ngr-location',
@@ -10,16 +13,21 @@ import {Router} from "@angular/router";
 export class LocationComponent implements OnInit, OnChanges {
 
   public locationSearchForm: FormGroup;
+  public results$: Observable<ApiLocationResponse>;
 
   constructor(
     private formBuilder: FormBuilder,
-    private router: Router
+    private router: Router,
+    private route: ActivatedRoute
   ) {
     this.createForm();
   }
 
   ngOnInit() {
-
+    this.results$ = this.route.data.pipe(
+      pluck('results'),
+      map((results: ApiLocationResponse) => results),
+    );
   }
 
   ngOnChanges() {
@@ -27,8 +35,7 @@ export class LocationComponent implements OnInit, OnChanges {
   }
 
   public onSubmit() {
-    console.warn(this.locationSearchForm.get('input'))
-    this.router.navigate(['/search/results'], {
+    this.router.navigate(['/search/location'], {
       queryParams: {
         location: this.locationSearchForm.get('input').value
       }

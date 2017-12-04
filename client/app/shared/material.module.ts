@@ -1,7 +1,7 @@
 import {NgModule} from "@angular/core";
 import {
   MatAutocompleteModule, MatButtonModule, MatFormFieldModule, MatInputModule,
-  MatListModule
+  MatListModule, MatSnackBarModule
 } from "@angular/material";
 
 const MODULES = [
@@ -9,7 +9,8 @@ const MODULES = [
   MatAutocompleteModule,
   MatInputModule,
   MatButtonModule,
-  MatListModule
+  MatListModule,
+  MatSnackBarModule
 ];
 
 @NgModule({

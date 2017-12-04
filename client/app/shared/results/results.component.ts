@@ -1,7 +1,8 @@
-import {Component, OnChanges, OnInit} from '@angular/core';
+import {Component, Input, OnChanges, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {Observable} from "rxjs/Observable";
 import {pluck, map} from 'rxjs/operators'
+import {ApiLocationResponse} from "../../core/data/rejseplanen/responses/location";
 
 @Component({
   selector: 'ngr-results',
@@ -10,7 +11,7 @@ import {pluck, map} from 'rxjs/operators'
 })
 export class ResultsComponent implements OnInit, OnChanges {
 
-  public results$: Observable<any>;
+  @Input() public results: ApiLocationResponse;
 
   constructor(
     private router: Router,
@@ -20,13 +21,7 @@ export class ResultsComponent implements OnInit, OnChanges {
   }
 
   ngOnInit() {
-    this.results$ = this.route.data.pipe(
-        pluck('results'),
-        map((result: any) => {
-          console.warn('straight from the routingzzzz', result);
-          return result
-        })
-    );
+
   }
 
   ngOnChanges() {

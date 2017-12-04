@@ -1,5 +1,4 @@
-import {map} from 'rxjs/operators';
-import {take} from 'rxjs/operators';
+import {take, map, catchError} from 'rxjs/operators';
 import {of} from 'rxjs/observable/of';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
@@ -8,12 +7,12 @@ import {ApiLocationResponse} from '../core/data/rejseplanen/responses/location';
 import {RejseplanenService} from '../core/data/rejseplanen/rejseplanen.service';
 import {makeStateKey, TransferState} from "@angular/platform-browser";
 
-const LOCATION_STATE = makeStateKey('LOCATION_STATE');
+const LOCATION_STATE = makeStateKey('city-weather-resolver.results');
 
 @Injectable()
 export class LocationResolverService implements Resolve<ApiLocationResponse> {
 
-  private result: ApiLocationResponse;
+  private results: ApiLocationResponse;
 
   constructor(
     private rejseplanen: RejseplanenService,
@@ -22,27 +21,55 @@ export class LocationResolverService implements Resolve<ApiLocationResponse> {
   ) {}
 
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<ApiLocationResponse> {
-    const searchTerm = route.paramMap.get('location');
+    const searchTerm = route.queryParamMap.get('location');
+    console.warn('searchTerm', searchTerm)
     const stateData = this.transferState.hasKey(LOCATION_STATE);
-
+    console.log('found in state?', stateData);
     if(stateData) {
-      const response = of(this.transferState.get<ApiLocationResponse>(LOCATION_STATE, null));
+      const response = of(
+        this.transferState.get<ApiLocationResponse>(
+          LOCATION_STATE,
+          {
+            data: {
+              stopLocation: [],
+              coordLocation: []
+            }
+          }
+        )
+      );
       this.transferState.remove(LOCATION_STATE);
       return response;
     } else {
-      this.transferState.onSerialize(LOCATION_STATE, () => this.result);
+      this.transferState.onSerialize(LOCATION_STATE, () => this.results);
       return this.rejseplanen.getLocation(searchTerm).pipe(
         take(1),
         map((response: ApiLocationResponse) => {
+          console.warn('can we act', response)
           if(response) {
-            this.transferState.set(LOCATION_STATE, response);
+            console.log('should set state');
+            this.transferState.set(LOCATION_STATE, response as null);
             return response;
           } else {
-            this.router.navigate(['/search']);
-            return null;
+            console.log('no remote data response!');
+            //this.router.navigate(['/search']);
+            return {
+              data: {
+                stopLocation: [],
+                coordLocation: []
+              }
+            };
           }
+        }),
+        catchError(e => {
+          console.warn('error ', e);
+          return of({
+            data: {
+              stopLocation: [],
+              coordLocation: []
+            }
+          });
         })
-      );
+      )
     }
   }
 }

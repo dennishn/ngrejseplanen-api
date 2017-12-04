@@ -2,6 +2,8 @@ import {NgModule, Optional, SkipSelf} from "@angular/core";
 import {SelectivePreloadingStrategy} from "./routing/selective-preloading-strategy";
 import {RejseplanenModule} from "./data/rejseplanen/rejseplanen.module";
 import { StateService } from './state/state.service';
+import {ErrorInterceptor} from "./http/error-interceptor.service";
+import {HTTP_INTERCEPTORS} from "@angular/common/http";
 
 @NgModule({
   imports: [
@@ -10,7 +12,12 @@ import { StateService } from './state/state.service';
   ],
   providers: [
     SelectivePreloadingStrategy,
-    StateService
+    StateService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: ErrorInterceptor,
+      multi: true
+    }
   ]
 })
 export class CoreModule {

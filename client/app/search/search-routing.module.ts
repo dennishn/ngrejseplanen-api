@@ -18,15 +18,19 @@ const routes: Routes = [
       {
         path: 'location',
         component: LocationComponent,
+        runGuardsAndResolvers: 'paramsOrQueryParamsChange',
         resolve: {
           results: LocationResolverService
-        },
-        runGuardsAndResolvers: 'paramsOrQueryParamsChange'
+        }
       },
-      {
+      /*{
         path: 'results',
-        component: ResultsComponent
+        component: ResultsComponent,
+        resolve: {
+          results: LocationResolverService
+        }
       }
+      */
     ]
   },
 ];

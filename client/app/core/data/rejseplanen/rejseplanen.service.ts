@@ -1,11 +1,13 @@
 import {Injectable} from "@angular/core";
-import {HttpClient, HttpParams} from "@angular/common/http";
+import {HttpClient, HttpErrorResponse, HttpParams} from "@angular/common/http";
 import {makeStateKey, TransferState} from "@angular/platform-browser";
 import {Observable} from "rxjs/Observable";
 import {ApiLocationResponse} from "./responses/location";
 import {environment} from "../../../../environments/environment";
 import {ApiDepartureBoardResponse} from "./responses/departure-board";
 import {ApiJourneyDetailResponse} from "./responses/journey-detail";
+import {catchError} from 'rxjs/operators/catchError';
+import {of} from 'rxjs/observable/of';
 
 const STATE_KEY = makeStateKey('rejseplanen');
 
@@ -32,7 +34,6 @@ export class RejseplanenService {
   public getLocation(searchString: string): Observable<ApiLocationResponse> {
     const url = this.buildUrl(this.apiRoutes.location);
     const params = new HttpParams().set('input', searchString);
-    console.warn(params.toString());
     return this.http.get<ApiLocationResponse>(url, {params: params});
   }
 

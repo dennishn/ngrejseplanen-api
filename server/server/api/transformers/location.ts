@@ -7,7 +7,8 @@ import {ApiLocationStopLocation} from "../data/api/models/location-stop-location
 export const locationTransformer = (data: RejseplanenLocationResponse): ApiLocationResponse => {
     const responseData: ApiLocationResponse = {
         data: {
-            stopLocation: []
+            stopLocation: [],
+            coordLocation: []
         }
     };
 

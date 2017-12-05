@@ -31,7 +31,7 @@ export function angularUniversal({ index, main, staticDirectory, enableProdMode 
   return (req: express.Request, res: express.Response) => {
     readFile$(index)
       .mergeMap(document => {
-        const url = req.path;
+        const url = req.originalUrl;
         const AppServerModuleNgFactory = require(main).AppServerModuleNgFactory;
         return Observable.from(renderModuleFactory(AppServerModuleNgFactory, { document, url, extraProviders: extraProviders }))
       })

@@ -29,6 +29,17 @@ function createExpressApp(config: FirebaseConfiguration) {
   }
 
   const cacheControlValue = getCacheControlHeader(config);
+
+  router.use((req, res, next) => {
+    console.log('Hello thingie...', req.path, req.query, req.url)
+    if (!req.path) {
+      // prepending "/" keeps query params, path params intact
+      req.url = `/${req.url}`
+    }
+    console.log('Goodbye thingie...', req.path, req.query, req.url)
+    next();
+  });
+
   // middleware that applies a Cache-Control header to each dynamic response
   router.use((req, res, next) => {
     res.set('Cache-Control', cacheControlValue);

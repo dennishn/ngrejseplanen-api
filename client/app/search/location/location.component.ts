@@ -24,7 +24,7 @@ export class LocationComponent implements OnInit, OnChanges {
   }
 
   ngOnInit() {
-    console.warn('component?!', this.route.queryParams, this.route.queryParamMap);
+    //console.warn('component?!', this.route.queryParams, this.route.queryParamMap);
     this.results$ = this.route.data.pipe(
       pluck('results'),
       map((results: ApiLocationResponse) => results)

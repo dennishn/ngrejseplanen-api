@@ -4,6 +4,7 @@ import {ActivatedRoute, ActivatedRouteSnapshot, Router} from "@angular/router";
 import {Observable} from "rxjs/Observable";
 import {pluck, map} from 'rxjs/operators';
 import {ApiLocationResponse} from "../../core/data/rejseplanen/responses/location";
+import {SearchState} from "../state/search-state.service";
 
 @Component({
   selector: 'ngr-location',
@@ -18,7 +19,8 @@ export class LocationComponent implements OnInit, OnChanges {
   constructor(
     private formBuilder: FormBuilder,
     private router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private searchState: SearchState
   ) {
     this.createForm();
   }
@@ -36,11 +38,12 @@ export class LocationComponent implements OnInit, OnChanges {
   }
 
   public onSubmit() {
-    this.router.navigate(['/search/location'], {
-      queryParams: {
-        location: this.locationSearchForm.get('input').value
-      }
-    });
+      this.searchState.searchByLocation(this.locationSearchForm.get('input').value);
+    // this.router.navigate(['/search/location'], {
+    //   queryParams: {
+    //     location: this.locationSearchForm.get('input').value
+    //   }
+    // });
   }
 
   private createForm(): void {

@@ -3,6 +3,7 @@ import {ReactiveFormsModule} from "@angular/forms";
 import {CommonModule} from "@angular/common";
 import {HttpClientModule} from "@angular/common/http";
 import {ResultsComponent} from "./results/results.component";
+import { StopLocationComponent } from './components/stop-location/stop-location.component';
 
 const SHARED_MODULES = [
   CommonModule,
@@ -16,7 +17,7 @@ const SHARED_COMPONENTS = [
 
 @NgModule({
   imports: [...SHARED_MODULES],
-  declarations: [...SHARED_COMPONENTS],
+  declarations: [...SHARED_COMPONENTS, StopLocationComponent],
   exports: [...SHARED_MODULES, ...SHARED_COMPONENTS]
 })
 export class SharedModule {

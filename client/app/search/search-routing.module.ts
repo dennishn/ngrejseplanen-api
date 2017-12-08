@@ -1,28 +1,31 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import {LocationComponent} from './location/location.component';
-import {SearchContainerComponent} from './container/search.component';
 import {LocationResolverService} from './location-resolver.service';
 import {ResultsComponent} from "../shared/results/results.component";
+
+import * as fromComponents from './components';
+import * as fromContainers from './containers';
 
 const routes: Routes = [
   {
     path: '',
-    component: SearchContainerComponent,
+    component: fromContainers.SearchContainerComponent,
     children: [
       {
         path: '',
-        pathMatch: 'full',
-        redirectTo: 'location'
+        component: fromComponents.SearchFormComponent
+        // pathMatch: 'full',
+        // redirectTo: 'location'
       },
-      {
-        path: 'location',
-        component: LocationComponent,
-        runGuardsAndResolvers: 'paramsOrQueryParamsChange',
-        resolve: {
-          results: LocationResolverService
-        }
-      },
+      // {
+      //   path: 'location',
+      //   component: LocationComponent,
+      //   runGuardsAndResolvers: 'paramsOrQueryParamsChange',
+      //   // resolve: {
+      //   //   results: LocationResolverService
+      //   // }
+      // },
       /*{
         path: 'results',
         component: ResultsComponent,

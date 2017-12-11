@@ -1,22 +1,9 @@
-<!--<form [formGroup]="locationSearchForm" (ngSubmit)="onSubmit()" novalidate>-->
-  <!--<mat-form-field>-->
-    <!--<input type="text" matInput formControlName="input" placeholder="Søg">-->
-    <!--<mat-hint align="start">Station, Stop, Addresse</mat-hint>-->
-  <!--</mat-form-field>-->
+<mat-toolbar color="primary">
+    <span>Application Title</span>
 
-  <!--<button mat-button color="primary" type="submit" [disabled]="locationSearchForm.invalid || locationSearchForm.pristine">Søg</button>-->
-<!--</form>-->
-<!--<mat-nav-list>-->
-  <!--<mat-list-item *ngFor="let location of locations" (click)="onStopClicked(location.id)">-->
-    <!--{{location.name}}-->
-  <!--</mat-list-item>-->
-<!--</mat-nav-list>-->
-<!--<mat-nav-list>-->
-  <!--<mat-list-item *ngFor="let departure of departureBoards" (click)="onDepartureClicked(departure.ref)">-->
-    <!--<h3 matLine>{{departure.name}} <small>{{departure.type}}</small></h3>-->
-    <!--<p matLine>-->
-      <!--{{departure.date | date:'short'}}-->
-    <!--</p>-->
-  <!--</mat-list-item>-->
-<!--</mat-nav-list>-->
+    <!-- This fills the remaining space of the current row -->
+    <span fxFlex="1 1 auto" fxLayout="row" mofoCunt="123" class="example-fill-remaining-space"></span>
+
+    <span>Right Aligned Text</span>
+</mat-toolbar>
 <router-outlet></router-outlet>

@@ -21,7 +21,7 @@
       "prefix": "ngr",
       "serviceWorker": true,
       "styles": [
-        "styles.scss"
+        "styles/styles.scss"
       ],
       "scripts": [],
       "environmentSource": "environments/environment.ts",

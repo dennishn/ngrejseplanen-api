@@ -2,26 +2,36 @@ import {NgModule} from "@angular/core";
 import {ReactiveFormsModule} from "@angular/forms";
 import {CommonModule} from "@angular/common";
 import {HttpClientModule} from "@angular/common/http";
-import {ResultsComponent} from "./results/results.component";
-import { StopLocationComponent } from './components/stop-location/stop-location.component';
+import {StopLocationComponent} from './components/stop-location/stop-location.component';
 
-const SHARED_MODULES = [
-  CommonModule,
-  ReactiveFormsModule,
-  HttpClientModule
+import * as fromComponents from './components';
+import {FlexLayoutModule} from "@angular/flex-layout";
+
+const SHARED_MODULES: any[] = [
+    CommonModule,
+    ReactiveFormsModule,
+    HttpClientModule,
+    FlexLayoutModule
 ];
 
-const SHARED_COMPONENTS = [
-  ResultsComponent
+const SHARED_COMPONENTS: any[] = [
+    ...fromComponents.components
 ];
 
 @NgModule({
-  imports: [...SHARED_MODULES],
-  declarations: [...SHARED_COMPONENTS, StopLocationComponent],
-  exports: [...SHARED_MODULES, ...SHARED_COMPONENTS]
+    imports: [
+        ...SHARED_MODULES
+    ],
+    declarations: [
+        ...SHARED_COMPONENTS
+    ],
+    exports: [
+        ...SHARED_MODULES,
+        ...SHARED_COMPONENTS
+    ]
 })
 export class SharedModule {
-  constructor() {
+    constructor() {
 
-  }
+    }
 }

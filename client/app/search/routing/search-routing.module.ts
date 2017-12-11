@@ -1,11 +1,9 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import {LocationComponent} from './location/location.component';
-import {LocationResolverService} from './location-resolver.service';
-import {ResultsComponent} from "../shared/results/results.component";
 
-import * as fromComponents from './components';
-import * as fromContainers from './containers';
+import * as fromComponents from '../components';
+import * as fromContainers from '../containers';
+import * as fromResolvers from './resolvers';
 
 const routes: Routes = [
   {
@@ -42,7 +40,7 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
   providers: [
-    LocationResolverService
+    fromResolvers.LocationResolverService
   ]
 })
 export class SearchRoutingModule { }

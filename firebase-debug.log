@@ -34,3 +34,14 @@
 [debug] [2017-12-05T18:35:42.739Z] <<< HTTP RESPONSE 200
 [info] +  functions: app: http://localhost:5000/ngrejseplanenapi/us-central1/app
 [info] +  functions: api: http://localhost:5000/ngrejseplanenapi/us-central1/api
+[debug] [2017-12-11T16:55:27.471Z] Error: write EPIPE
+    at _errnoException (util.js:1024:11)
+    at Socket._writeGeneric (net.js:767:25)
+    at Socket._write (net.js:786:8)
+    at doWrite (_stream_writable.js:387:12)
+    at writeOrBuffer (_stream_writable.js:373:5)
+    at Socket.Writable.write (_stream_writable.js:290:11)
+    at Socket.write (net.js:704:40)
+    at exports.Console.Console.log (C:\Users\dni\AppData\Roaming\npm\node_modules\firebase-tools\node_modules\winston\lib\winston\transports\console.js:119:20)
+    at emit (C:\Users\dni\AppData\Roaming\npm\node_modules\firebase-tools\node_modules\winston\lib\winston\logger.js:186:17)
+    at C:\Users\dni\AppData\Roaming\npm\node_modules\firebase-tools\node_modules\winston\node_modules\async\lib\async.js:157:13

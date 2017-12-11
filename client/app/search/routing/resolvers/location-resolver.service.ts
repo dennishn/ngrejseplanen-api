@@ -3,8 +3,8 @@ import {of} from 'rxjs/observable/of';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import {Router, Resolve, RouterStateSnapshot, ActivatedRouteSnapshot, ActivatedRoute} from '@angular/router';
-import {ApiLocationResponse} from '../core/data/rejseplanen/responses/location';
-import {RejseplanenService} from '../core/data/rejseplanen/rejseplanen.service';
+import {ApiLocationResponse} from '../../../core/data/rejseplanen/responses/location';
+import {RejseplanenService} from '../../../core/data/rejseplanen/rejseplanen.service';
 import {makeStateKey, Meta, Title, TransferState} from "@angular/platform-browser";
 
 const LOCATION_STATE = makeStateKey('city-weather-resolver.results');

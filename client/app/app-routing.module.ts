@@ -15,17 +15,6 @@ const routes: Routes = [
       preload: true
     }
   }
-  // {
-  //   path: 'lazy',
-  //   loadChildren: 'app/lazy/lazy.module#LazyModule'
-  // },
-  // {
-  //   path: 'lazier',
-  //   loadChildren: 'app/lazier/lazier.module#LazierModule',
-  //   data: {
-  //     preload: true
-  //   }
-  // }
 ];
 
 @NgModule({
